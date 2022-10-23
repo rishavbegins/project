@@ -1,0 +1,161 @@
+<div class="container-fluid">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark" >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" style="color: white;">Employee Management System</a>
+          <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAttendance">
+              Add Attendance</button>
+          </div> -->
+        </div>
+    </nav>
+  
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Employee ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">StartTime</th>
+          <th scope="col">EndTime</th>
+          <th scope="col">Date</th>
+          <th scope="col">status</th>
+          <!-- <th scope="col">Action</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let attendance of atnList">
+          <td>{{attendance.id}}</td>
+          <td>{{attendance.employeeid}}</td>
+          <td>{{attendance.name}}</td>
+          <td>{{attendance.starttime}}</td>
+          <td>{{attendance.endtime}}</td>
+          <td>{{attendance.date}}</td>
+          <td>{{attendance.status}}</td>
+          <!-- <td>{{attendance.Action}}</td> -->
+          <!-- <td>
+                 <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#editAttendance" (click)="editAttendance(attendance)">Edit</button> 
+                <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#editAttendance" (click)="editAttendance(attendance)">Edit</button> 
+                <button type="button" class="btn btn-outline-primary me-2" data-toggle="modal" data-target="#editAttendance"(click)="editAttendance(attendance)">
+                Edit</button>
+                <button type="button" class="btn btn-outline-danger" (click)="deleteAttendance(attendance)">Delete</button>
+            </td> -->
+  
+        </tr>
+  
+      </tbody>
+    </table>
+    
+  
+    <div class="modal fade" id="addAttendance" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="atnDetail">
+              <div class="sm-3">
+                <label for="exampleInputEmail1" class="form-label">id</label>
+                <input type="text" formControlName="id" class="form-control" id="id" aria-describedby="emailHelp">
+              </div>
+              <div class="sm-3">
+                <label for="exampleInputEmail1" class="form-label">Employeeid</label>
+                <input type="text" formControlName="employeeid" class="form-control" id="employeeid"
+                  aria-describedby="emailHelp">
+              </div>
+              <div class="sm-3">
+                <label for="exampleInputEmail1" class="form-label">Name</label>
+                <input type="text" formControlName="name" class="form-control" id="name" aria-describedby="emailHelp">
+              </div>
+              <div class="sm-3">
+                <label for="exampleInputEmail1" class="form-label">starttime</label>
+                <input type="text" formControlName="starttime" class="form-control" id="starttime"
+                  aria-describedby="emailHelp">
+              </div>
+              <div class="sm-3">
+                <label for="exampleInputEmail1" class="form-label">Endtime</label>
+                <input type="text" formControlName="endtime" class="form-control" id="endtime"
+                  aria-describedby="emailHelp">
+              </div>
+              <div class="sm-3">
+                <label for="exampleInputEmail1" class="form-label">Date</label>
+                <input type="text" formControlName="date" class="form-control" id="date" aria-describedby="emailHelp">
+              </div>
+              <div class="sm-3">
+                <label for="exampleInputEmail1" class="form-label">Status</label>
+                <input type="text" formControlName="status" class="form-control" id="status" aria-describedby="emailHelp">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addAttendance()">Add
+                  employee</button>
+              </div>
+            </form> 
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    
+  <!-- edit employee modal -->
+  
+  <div class="modal fade" id="editAttendance" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="atnDetail">
+            <div class="sm-3">
+              <label for="exampleInputEmail1" class="form-label">id</label>
+              <input type="text" formControlName="id" class="form-control" id="id" aria-describedby="emailHelp">
+            </div>
+            <div class="sm-3">
+              <label for="exampleInputEmail1" class="form-label">Employeeid</label>
+              <input type="text" formControlName="employeeid" class="form-control" id="employeeid"
+                aria-describedby="emailHelp">
+            </div>
+            <div class="sm-3">
+              <label for="exampleInputEmail1" class="form-label">Name</label>
+              <input type="text" formControlName="name" class="form-control" id="name" aria-describedby="emailHelp">
+            </div>
+            <div class="sm-3">
+              <label for="exampleInputEmail1" class="form-label">starttime</label>
+              <input type="text" formControlName="starttime" class="form-control" id="starttime"
+                aria-describedby="emailHelp">
+            </div>
+            <div class="sm-3">
+              <label for="exampleInputEmail1" class="form-label">Endtime</label>
+              <input type="text" formControlName="endtime" class="form-control" id="endtime"
+                aria-describedby="emailHelp">
+            </div>
+            <div class="sm-3">
+              <label for="exampleInputEmail1" class="form-label">Date</label>
+              <input type="text" formControlName="date" class="form-control" id="date" aria-describedby="emailHelp">
+            </div>
+            
+            <div class="sm-3">
+              
+              <label for="exampleInputEmail1" class="form-label">Status</label>
+              <input type="text" formControlName="status" class="form-control" id="status" aria-describedby="emailHelp">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateAttendance()">Update
+    </button>
+            </div>
+          </form> 
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  </div> 

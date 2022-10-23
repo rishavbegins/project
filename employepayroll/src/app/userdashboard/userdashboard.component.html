@@ -1,0 +1,182 @@
+
+
+<div class="container-fluid navbar-dark bg-dark" style="margin-top:10px;">
+
+  <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Employee Management</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+
+      </ul>
+      
+      <span class="navbar-text">
+        <button type="button" data-toggle="modal" data-target="#edit"  (click)="onEdit(user)" class="btn btn-warning">Edit</button>
+      </span>
+    
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      <span  class="navbar-text">
+        <button type="button" (click)="logoutSession()" class="btn btn-danger">Logout</button>
+      </span>
+    </div>
+  </nav>
+
+
+   
+    <div class="row navbar-dark bg-dark" >
+   
+      <div class="column "  style=" border:solid; background-color: bisque; border-radius: 6%; float:left;width:20%;padding-left:10px;margin-left: 16px;text-align:justify;"><br>
+        
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" style="width:300%;" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Leave
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button class="dropdown-item" routerLink="/applyleave" type="button">Apply Leave</button>
+            <button class="dropdown-item" routerLink="/leavestatus" type="button">Leave Status</button>
+            
+          </div>
+        </div>
+
+          <br>
+          <br>
+
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle"  style="width:205%;"  type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Attendance
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" routerLink="/attendance" type="button">View Attendance</button>
+            </div>
+          </div>
+
+          <br>
+          <br>
+
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle"  style="width:300%;"  type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Salary
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" routerLink="/salary" type="button">View Salary History</button>
+            </div>
+          </div>
+        
+         
+    
+        </div>
+    
+        <div class="column" style="clear:both;width:75%; ">
+    <div class="container" style="margin-top:10px;">
+    <div class="card jumbotron" style="text-align:center;display: inline-flexbox; border-radius: 4%;">
+        <h4>Today's Schedule</h4>
+        <div style="display:inline;">
+            <button class="btn btn-success" style="width:50%;">{{user.schedule}}</button>
+            <br>
+        </div>
+    </div>
+    <div class="container card" style="background-color:rgb(215, 244, 241);margin-bottom:10px;padding:10px; border-radius: 6%;">
+        <h4>Emplyee Details</h4>
+        <div  class="row" style="display:inline-flexbox;">
+            <div class="column" style="width:50%;padding-left:15px;">
+              <h5>  Name:  {{user.name}}<br> </h5>
+               <h5> Mobile: {{user.mobile}}<br> <h5>
+               </h5> Email: {{user.email}}  <br> </h5>
+            <h5> Gender: {{user.gender}}<br> </h5>
+            </div>
+            <div   class="column">
+           <h5> DOB: {{user.dob}}   <br> </h5>
+            <h5>DOJ: {{user.doj}}  <br> </h5>
+            <h5>Designation: {{user.designation}} <br> </h5>
+           
+            </div> 
+        </div>
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="grid-container">
+      <div class="grid-item dark bg-dark ">.</div>
+      <div class="grid-item dark bg-dark">.</div>
+      <div class="grid-item dark bg-dark " style="text-align:center;display: inline-flexbox; color: white; 
+      font-size: larger; font-weight: 600;">WELCOME {{user.name}}</div>
+      <div class="grid-item dark bg-dark">.</div>
+      <div class="grid-item dark bg-dark">.</div>
+      <div class="grid-item dark bg-dark">.</div>
+   
+      <div class="grid-item dark bg-dark " style="text-align:center;display: inline-flexbox; color: white; 
+     ">&copy; 2022 EmployeTechs.com</div>
+     <div class="grid-item dark bg-dark">.</div>
+      
+     
+    </div>
+
+
+    <!--Edit user-->
+
+    <div class="container-fluid">
+        
+      <div class="d-flex">
+         
+          <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                        <h4>Update Profile</h4>
+                              <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      </div>
+                      <div class="modal-body">
+                          <form [formGroup]="formValue">
+                              <div class="mb-3">
+                                  <label for="exampleInputFirstname" class="form-label">Name</label>
+                                  <input type="text" formControlName="name" class="form-control" id="name" ng-model="user.name">
+                                </div>
+                              
+                              <div class="mb-3">
+                                  <label for="exampleInputMobilenumber" class="form-label">Mobile Number</label>
+                                  <input type="text"  formControlName="mobile" class="form-control" id="mobile" ng-model="user.mobile">
+                              </div>
+                              <div class="mb-3">
+                                  <label for="exampleInputEmail1" class="form-label">EmailId</label>
+                                  <input type="email" formControlName="email"  class="form-control" id="email" >
+                                </div>
+                              <div class="mb-3">
+                                  <label for="exampleInputGender" class="form-label">Gender</label>
+                                  <input type="text" formControlName="gender"  class="form-control" id="gender">
+                              </div>
+                              <div class="mb-3">
+                                  <label for="exampleInputdob" class="form-label">Date of Birth</label>
+                                  <input type="text" formControlName="dob"  class="form-control" id="dob">
+                              </div>
+                              <div class="mb-3">
+                                  <label for="exampleInputdoj" class="form-label">Date of Joining</label>
+                                  <input type="text" formControlName="doj"  class="form-control" id="doj">
+                              </div>
+                              <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                <input type="text"  formControlName="password" class="form-control" id="password1">
+                              </div>
+                              <div class="mb-3">
+                                  <label for="exampleInputdesignation" class="form-label">Designation</label>
+                                  <input type="text"  formControlName="designation" class="form-control" id="designation">
+                                </div>
+                                
+                            </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" id="cancel1" class="btn btn-primary" data-dismiss="modal">Cancel</button>&nbsp;
+                          <button type="button" (click)="updateEmployeeDetails()" class="btn btn-primary" >Update</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>

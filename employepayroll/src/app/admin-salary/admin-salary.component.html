@@ -1,0 +1,113 @@
+<div class="container" style="margin-top: 100px;">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-info float-left">Salary Dashboad</h2>
+            <button class="btn btn-info" routerLink="/admindashboard" style="float:right;margin-left:10px;">Back</button>
+            <button type="button" (click)="addButtonClickFunction()" class="btn btn-info mb-3 float-right" data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-plus"></i> Add New Data
+            </button>
+        </div>
+
+        <div class="col-12">
+            <table class="table table-sm table-stripped">
+                <thead>
+                    <tr class="bg-info text-white text-center">
+                        
+                        <th>EMPLOYEE_ID</th>
+                        <th>NAME</th>
+                        <th>MONTH</th>
+                        <th>YEAR</th>
+                        <th>SALARY</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of salaryData" class="text-center">
+                        
+                        <td>{{row.employeeid}}</td>
+                        <td>{{row.name}}</td>
+                        <td>{{row.month}}</td>
+                        <td>{{row.year}}</td>
+                        <td>{{row.salary}}</td>
+                        <td >
+                            <button (click)="updateSalary(row)" class="btn btn-outline-info pl-3 pr-3 mx-2" data-toggle="modal" data-target="#exampleModal1"><i class="fas fa-pencil"></i> Edit</button>
+                            <button (click)="deleteInfo(row)"  class="btn btn-outline-danger pl-3 " ><i class="fas fa-trash"></i> Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary" *ngIf="showAddTitle" id="exampleModalLabel">Add New Data</h5>
+                
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+
+            <div class="modal-body">
+                <form [formGroup]="formValue">
+                    <div class="form-group">
+                        <label for="empid">EMPLOYEE_ID</label>
+                        <input  formControlName="empid"  id="empid" type="text" class="form-control" placeholder="Enter empid.." required> 
+                    </div>
+                    <div class="form-group">
+                        <label for="name" > Name</label>
+                        <input id="name" formControlName="name" type="text"  class="form-control" placeholder="Enter Name.." required> 
+                    </div>
+                    <div class="form-group">
+                        <label for="month">MONTH</label>
+                        <input id="month" type="text" formControlName="month" class="form-control" placeholder="Enter Month.." required> <br>
+                    </div>
+                    <div class="form-group">
+                        <label for="year">YEAR</label>
+                        <input id="year" type="text" formControlName="year" class="form-control" placeholder="Enter Year.." required> <br>
+                    </div>
+                    <div class="form-group">
+                        <label for="salary">Salary</label>
+                        <input id="salary" type="text" formControlName="salary" class="form-control" placeholder="Enter salary.." required> <br>
+                    </div>
+                    <button type="button" id="cancel" class="btn btn-primary" data-dismiss="modal">Cancel</button>&nbsp;
+                    <button type="submit" *ngIf="showAdd" (click)="postSalaryDetails()" class="btn btn-primary mx-2">Save</button>
+    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary" *ngIf="showUpdateTitle" id="exampleModalLabel">Update Salary</h5>
+                
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+
+            <div class="modal-body">
+                <form [formGroup]="formValue">
+                   
+                    <div class="form-group">
+                        <label for="salary">Salary</label>
+                        <input id="salary" type="text" formControlName="salary" class="form-control" placeholder="Enter salary.." required> <br>
+                    </div>
+                    <button type="button" id="cancel1" class="btn btn-primary" data-dismiss="modal">Cancel</button>&nbsp;
+                    <button type="submit" *ngIf="showUpdate" (click)="updateSalaryDetails()" class="btn btn-primary mx-2">Update</button>
+    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

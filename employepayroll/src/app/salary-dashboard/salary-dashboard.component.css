@@ -1,0 +1,20 @@
+h1{
+    text-align: center;
+}
+.jumbotron{
+    align-content: center;
+}
+#content{
+    width: 595px;
+    height: 842px;
+}
+#table{
+    max-width: 2480px;
+    width: 100%;
+    
+}
+#table td{
+    width: auto;
+    overflow: hidden;
+    word-wrap: break-word;
+}

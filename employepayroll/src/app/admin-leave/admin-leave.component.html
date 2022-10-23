@@ -1,0 +1,67 @@
+<div class="bg-dark" style="padding:10px;">
+  <h3 style="color:white;">Employement Management</h3>
+</div>
+<div class="body">
+<div class="mytabs">
+  <input type="radio" id="tabfree" name="mytabs" checked="checked" (click)="pending()">
+  <label for="tabfree">Pending</label>
+  <div class="tab">
+      <div class="card-body">
+          <table class = "table table-striped table-bordered text-center ">
+              <thead style="color: white;background-color:rgb(51, 15, 196);">
+                  <tr>
+                      <th>EmployeeId</th>
+                      <th> Start Date</th>
+                      <th> End Date </th>
+                      <th> Reason</th>
+                      <th> Status</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody style="background-color:rgb(222, 241, 241);">
+                  <tr *ngFor = "let l of leaves" >
+                    <td> {{ l.employeeid }} </td>
+                      <td> {{l.startdate}} </td>
+                      <td> {{l.enddate }} </td>
+                      <td> {{ l.reason }} </td>
+                      <td> {{ l.status }} </td>
+                      <td>
+                          <button class="btn btn-success" (click)="approve(l.employeeid,l.id)">&#10004;</button> &#160;
+                          <button class="btn btn-danger" (click)="reject(l.employeeid,l.id)">&#10006;</button>
+                      </td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+  </div>
+
+  <input type="radio" id="tabsilver" name="mytabs" (click)="remaining()">
+  <label for="tabsilver">All reviewed</label>
+  <div class="tab">
+      <div class="card-body">
+          <table class = "table table-striped table-bordered text-center ">
+              <thead style="color: white;background-color:rgb(51, 15, 196);">
+                  <tr>
+                      <th>EmployeeId</th>
+                      <th> Start Date</th>
+                      <th> End Date </th>
+                      <th> Reason</th>
+                      <th> Status</th>
+                  </tr>
+              </thead>
+              <tbody style="background-color:rgb(222, 241, 241);">
+                  <tr *ngFor = "let l of leaves" >
+                    <td> {{ l.employeeid }} </td>
+                      <td> {{l.startdate}} </td>
+                      <td> {{l.enddate }} </td>
+                      <td> {{ l.reason }} </td>
+                      <td> {{ l.status }} </td>
+                      
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+  </div>
+  <button class="btn " routerLink="/admindashboard" style="float:right;margin-left:10px;margin-bottom:9px;background-color: white;">Back</button>
+</div>
+</div>
